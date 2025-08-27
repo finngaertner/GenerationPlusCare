@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GenerationPlusCare – Interesse melden</title>
+  <meta name="theme-color" content="#8fb6aa" />
   <link rel="stylesheet" href="styles.css" />
 
   <!-- EmailJS SDK -->
@@ -13,51 +14,91 @@
   </script>
 </head>
 <body>
-  <main class="container">
-    <header class="header">
-      <!-- Logo kompakt -->
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Startseite">
+      <!-- Compact SVG logo -->
       <svg class="logo" viewBox="0 0 220 50" aria-label="GenerationPlusCare Logo">
-        <path d="M20 28 C10 42, 40 44, 30 30" fill="none" stroke="#A7C4BC" stroke-width="3" />
+        <path d="M20 28 C10 42, 40 44, 30 30" fill="none" stroke="#8fb6aa" stroke-width="3" />
         <path d="M40 28 C50 42, 20 44, 30 30" fill="none" stroke="#5A6A6C" stroke-width="3" />
-        <circle cx="30" cy="20" r="5" fill="#A7C4BC" />
-        <text x="60" y="30" font-size="14" font-weight="600" fill="#5A6A6C"
+        <circle cx="30" cy="20" r="5" fill="#8fb6aa" />
+        <text x="60" y="30" font-size="14" font-weight="700" fill="#4c595c"
               font-family="Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif">
           GenerationPlusCare
         </text>
       </svg>
-    </header>
+    </a>
+    <nav class="nav">
+      <a href="#impressum">Impressum</a>
+      <a href="#datenschutz">Datenschutz</a>
+    </nav>
+  </header>
 
-    <section class="card">
-      <h1>Ich habe Interesse</h1>
-      <form id="interestForm" autocomplete="off" novalidate>
-        <div class="field">
-          <label for="institution">Name der Einrichtung*</label>
-          <input id="institution" name="institution" type="text" required placeholder="z. B. Kita Sonnenweg, Mainz" />
-        </div>
-        <div class="field">
-          <label for="name">Name (optional)</label>
-          <input id="name" name="name" type="text" placeholder="Max Mustermann" />
-        </div>
-        <div class="field">
-          <label for="email">E-Mail (optional)</label>
-          <input id="email" name="email" type="email" placeholder="max@example.org" />
-        </div>
+  <!-- Main -->
+  <main id="top" class="shell">
+    <section class="hero">
+      <div class="panel">
+        <h1>Ich habe Interesse</h1>
+        <p class="sub">Melde dich mit wenigen Klicks – wir melden uns anschließend kurz bei dir.</p>
 
-        <input type="text" id="website" name="website" tabindex="-1" class="honeypot" />
+        <form id="interestForm" autocomplete="off" novalidate>
+          <div class="field">
+            <label for="institution">Name der Einrichtung<span class="req" aria-hidden="true">*</span></label>
+            <input id="institution" name="institution" type="text" required placeholder="z. B. Kita Sonnenweg, Mainz" />
+          </div>
 
-        <button id="sendBtn" type="submit" class="cta">Absenden</button>
-        <div id="status" class="status" aria-live="polite"></div>
-      </form>
+          <div class="field">
+            <label for="name">Name (optional)</label>
+            <input id="name" name="name" type="text" placeholder="Max Mustermann" />
+          </div>
+
+          <div class="field">
+            <label for="email">E-Mail (optional)</label>
+            <input id="email" name="email" type="email" placeholder="max@example.org" />
+          </div>
+
+          <!-- Honeypot gegen Bots -->
+          <input type="text" id="website" name="website" tabindex="-1" class="honeypot" />
+
+          <button id="sendBtn" type="submit" class="cta">Absenden</button>
+          <div id="status" class="status" aria-live="polite"></div>
+        </form>
+      </div>
     </section>
 
-    <footer class="footer">
-      <small>
-        Kontakt: Finn Gärtner · <a href="mailto:finngaertner@web.de">finngaertner@web.de</a> ·
-        +49&nbsp;1525&nbsp;4273457 ·
-        <a href="https://www.linkedin.com/in/finn-g%C3%A4rtner-25a6581b6/" target="_blank" rel="noopener">LinkedIn</a>
-      </small>
-    </footer>
+    <!-- Legal sections -->
+    <section id="impressum" class="legal">
+      <h2>Impressum</h2>
+      <p>
+        Finn Gärtner · Mainz<br>
+        E-Mail: <a href="mailto:finngaertner@web.de">finngaertner@web.de</a> ·
+        Tel.: +49&nbsp;1525&nbsp;4273457<br>
+        LinkedIn: <a href="https://www.linkedin.com/in/finn-g%C3%A4rtner-25a6581b6/" target="_blank" rel="noopener">Profil</a>
+      </p>
+    </section>
+
+    <section id="datenschutz" class="legal">
+      <h2>Datenschutz</h2>
+      <p>
+        Wir verarbeiten die von dir freiwillig eingegebenen Angaben (Einrichtung, optional Name/E-Mail)
+        ausschließlich zum Zweck der Kontaktaufnahme im Rahmen von GenerationPlusCare. Es erfolgt keine
+        Weitergabe an Dritte. Der Versand der Benachrichtigung läuft über EmailJS. Weitere Informationen
+        erhältst du auf Anfrage per E-Mail.
+      </p>
+    </section>
   </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <small>
+      © <span id="y"></span> GenerationPlusCare ·
+      <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a>
+    </small>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
