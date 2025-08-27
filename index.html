@@ -5,44 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GenerationPlusCare – Interesse melden</title>
   <link rel="stylesheet" href="styles.css" />
+
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // 👉 Trage hier deinen PUBLIC KEY ein
     (function(){ emailjs.init({ publicKey: "GrK3PNM3XwVuGy6Zw" }); })();
   </script>
 </head>
 <body>
-  <main class="card">
-    <h1>Ich habe Interesse</h1>
-    <p>
-      Mit einem Klick kannst du uns mitteilen, dass du Interesse hast, in Kitas
-      unterstützend mitzuhelfen. Wir melden uns danach kurz bei dir.
-    </p>
+  <header class="page-header">
+    <a class="brand" href="#">
+      <svg class="logo" viewBox="0 0 220 50" role="img" aria-label="GenerationPlusCare Logo">
+        <path d="M20 28 C10 42, 40 44, 30 30" fill="none" stroke="#A7C4BC" stroke-width="3" />
+        <path d="M40 28 C50 42, 20 44, 30 30" fill="none" stroke="#5A6A6C" stroke-width="3" />
+        <circle cx="30" cy="20" r="5" fill="#A7C4BC" />
+        <text x="60" y="30" font-size="18" font-weight="700" fill="#5A6A6C" font-family="Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif">
+          GenerationPlusCare
+        </text>
+      </svg>
+    </a>
+  </header>
 
-    <form id="interestForm" autocomplete="off" novalidate>
-      <div class="field">
-        <label for="name">Name (optional)</label>
-        <input id="name" name="name" type="text" placeholder="Max Mustermann" />
-      </div>
+  <main class="shell">
+    <section class="panel">
+      <h1>Ich habe Interesse</h1>
 
-      <div class="field">
-        <label for="email">E-Mail (optional)</label>
-        <input id="email" name="email" type="email" placeholder="max@example.org" />
-      </div>
+      <form id="interestForm" autocomplete="off" novalidate>
+        <div class="grid">
+          <div class="field">
+            <label for="institution">Name der Einrichtung<span aria-hidden="true" class="req">*</span></label>
+            <input id="institution" name="institution" type="text" required placeholder="z. B. Kita Sonnenweg, Mainz" />
+            <small class="hint">Bitte die Einrichtung eintragen, die dich kontaktiert hat.</small>
+          </div>
 
-      <!-- Honeypot gegen Bots -->
-      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" class="honeypot" />
+          <div class="field">
+            <label for="name">Name (optional)</label>
+            <input id="name" name="name" type="text" placeholder="Max Mustermann" />
+          </div>
 
-      <button id="sendBtn" type="submit">Ich habe Interesse</button>
-      <p class="hint">
-        Mit dem Klick sendest du uns eine kurze Nachricht. Es werden keine Daten gespeichert,
-        außer das, was du hier freiwillig eingibst.
-      </p>
-    </form>
+          <div class="field">
+            <label for="email">E-Mail (optional)</label>
+            <input id="email" name="email" type="email" placeholder="max@example.org" />
+          </div>
+        </div>
 
-    <div id="status" class="status" aria-live="polite"></div>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" class="honeypot" />
+
+        <button id="sendBtn" type="submit" class="cta">Ich habe Interesse</button>
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
+    </section>
   </main>
+
+  <footer class="footer">
+    <small>
+      Kontakt: Finn Gärtner · <a href="mailto:finngaertner@web.de">finngaertner@web.de</a> · +49&nbsp;1525&nbsp;4273457 ·
+      <a href="https://www.linkedin.com/in/finn-g%C3%A4rtner-25a6581b6/" target="_blank" rel="noopener">LinkedIn</a>
+    </small>
+  </footer>
 
   <script src="script.js"></script>
 </body>
