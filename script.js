@@ -1,7 +1,5 @@
-// EmailJS IDs (deine)
 const EMAILJS_SERVICE_ID  = "service_08nz50c";
 const EMAILJS_TEMPLATE_ID = "template_1tg7o78";
-// Public Key ist im <head> gesetzt.
 
 const form     = document.getElementById("interestForm");
 const btn      = document.getElementById("sendBtn");
@@ -11,16 +9,14 @@ function sanitize(s){ return (s || "").replace(/[<>]/g, ""); }
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  // Honeypot
-  if ((document.getElementById("website").value || "").trim() !== "") return;
+  if ((document.getElementById("website").value || "").trim() !== "") return; // Honeypot
 
   const institution = sanitize(document.getElementById("institution").value);
   const name        = sanitize(document.getElementById("name").value);
   const email       = sanitize(document.getElementById("email").value);
 
-  if (!institution){
-    statusEl.textContent = "Bitte gib den Namen der Einrichtung an.";
+  if (!institution || !name || !email){
+    statusEl.textContent = "Bitte fülle alle Pflichtfelder aus.";
     return;
   }
 
@@ -29,9 +25,16 @@ form.addEventListener("submit", async (e) => {
 
   try{
     const payload = {
+      // Empfängeradresse für „To Email“
+      to_email: email,
+      to_name:  name,       // optional, falls im Template verwendet
+      reply_to: email,      // optional: setzt Reply-To
+
+      // Inhalte für den Mailtext
       institution,
-      name:  name  || "(kein Name angegeben)",
-      email: email || "(keine E-Mail angegeben)",
+      name,
+      email,
+
       source_url: window.location.href,
       timestamp: new Date().toISOString()
     };
