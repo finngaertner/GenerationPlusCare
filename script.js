@@ -1,7 +1,7 @@
-// EmailJS IDs (eingetragen)
+// EmailJS-IDs – bereits befüllt
 const EMAILJS_SERVICE_ID  = "service_08nz50c";
 const EMAILJS_TEMPLATE_ID = "template_1tg7o78";
-// Public Key ist in index.html via emailjs.init gesetzt.
+// Public Key wird im <head> via emailjs.init gesetzt.
 
 const form     = document.getElementById("interestForm");
 const btn      = document.getElementById("sendBtn");
@@ -12,7 +12,8 @@ function sanitize(s){ return (s || "").replace(/[<>]/g, ""); }
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  if (document.getElementById("website").value.trim() !== "") return; // Honeypot
+  // Honeypot: wenn ausgefüllt → Bot
+  if ((document.getElementById("website").value || "").trim() !== "") return;
 
   const institution = sanitize(document.getElementById("institution").value);
   const name        = sanitize(document.getElementById("name").value);
@@ -29,7 +30,7 @@ form.addEventListener("submit", async (e) => {
   try{
     const payload = {
       institution,
-      name:  name || "(kein Name angegeben)",
+      name:  name  || "(kein Name angegeben)",
       email: email || "(keine E-Mail angegeben)",
       source_url: window.location.href,
       timestamp: new Date().toISOString()
