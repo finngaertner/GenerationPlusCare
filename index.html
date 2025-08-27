@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GenerationPlusCare – Interesse melden</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // 👉 Trage hier deinen PUBLIC KEY ein
+    (function(){ emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" }); })();
+  </script>
+</head>
+<body>
+  <main class="card">
+    <h1>Ich habe Interesse</h1>
+    <p>
+      Mit einem Klick kannst du uns mitteilen, dass du Interesse hast, in Kitas
+      unterstützend mitzuhelfen. Wir melden uns danach kurz bei dir.
+    </p>
+
+    <form id="interestForm" autocomplete="off" novalidate>
+      <div class="field">
+        <label for="name">Name (optional)</label>
+        <input id="name" name="name" type="text" placeholder="Max Mustermann" />
+      </div>
+
+      <div class="field">
+        <label for="email">E-Mail (optional)</label>
+        <input id="email" name="email" type="email" placeholder="max@example.org" />
+      </div>
+
+      <!-- Honeypot gegen Bots -->
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" class="honeypot" />
+
+      <button id="sendBtn" type="submit">Ich habe Interesse</button>
+      <p class="hint">
+        Mit dem Klick sendest du uns eine kurze Nachricht. Es werden keine Daten gespeichert,
+        außer das, was du hier freiwillig eingibst.
+      </p>
+    </form>
+
+    <div id="status" class="status" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
