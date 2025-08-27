@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GenerationPlusCare – Interesse melden</title>
+  <meta name="theme-color" content="#A7C4BC" />
   <link rel="stylesheet" href="styles.css" />
 
   <!-- EmailJS SDK -->
@@ -13,13 +14,15 @@
   </script>
 </head>
 <body>
-  <header class="page-header">
-    <a class="brand" href="#">
+  <header class="page-header" aria-label="Kopfbereich">
+    <a class="brand" href="#" aria-label="GenerationPlusCare Start">
+      <!-- dezentes, skalierbares Logo -->
       <svg class="logo" viewBox="0 0 220 50" role="img" aria-label="GenerationPlusCare Logo">
         <path d="M20 28 C10 42, 40 44, 30 30" fill="none" stroke="#A7C4BC" stroke-width="3" />
         <path d="M40 28 C50 42, 20 44, 30 30" fill="none" stroke="#5A6A6C" stroke-width="3" />
         <circle cx="30" cy="20" r="5" fill="#A7C4BC" />
-        <text x="60" y="30" font-size="18" font-weight="700" fill="#5A6A6C" font-family="Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif">
+        <text x="60" y="30" font-size="18" font-weight="700" fill="#5A6A6C"
+              font-family="Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif">
           GenerationPlusCare
         </text>
       </svg>
@@ -27,15 +30,18 @@
   </header>
 
   <main class="shell">
-    <section class="panel">
-      <h1>Ich habe Interesse</h1>
+    <section class="panel" aria-labelledby="title">
+      <h1 id="title">Ich habe Interesse</h1>
 
       <form id="interestForm" autocomplete="off" novalidate>
         <div class="grid">
-          <div class="field">
-            <label for="institution">Name der Einrichtung<span aria-hidden="true" class="req">*</span></label>
-            <input id="institution" name="institution" type="text" required placeholder="z. B. Kita Sonnenweg, Mainz" />
-            <small class="hint">Bitte die Einrichtung eintragen, die dich kontaktiert hat.</small>
+          <div class="field full">
+            <label for="institution">Name der Einrichtung<span class="req" aria-hidden="true">*</span></label>
+            <input id="institution" name="institution" type="text" required
+                   placeholder="z. B. Kita Sonnenweg, Mainz" />
+            <small id="institutionHint" class="hint">
+              Bitte die Einrichtung eintragen, die dich kontaktiert hat.
+            </small>
           </div>
 
           <div class="field">
@@ -49,6 +55,7 @@
           </div>
         </div>
 
+        <!-- Honeypot gegen Bots -->
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" class="honeypot" />
 
         <button id="sendBtn" type="submit" class="cta">Ich habe Interesse</button>
@@ -59,7 +66,8 @@
 
   <footer class="footer">
     <small>
-      Kontakt: Finn Gärtner · <a href="mailto:finngaertner@web.de">finngaertner@web.de</a> · +49&nbsp;1525&nbsp;4273457 ·
+      Kontakt: Finn Gärtner · <a href="mailto:finngaertner@web.de">finngaertner@web.de</a> ·
+      +49&nbsp;1525&nbsp;4273457 ·
       <a href="https://www.linkedin.com/in/finn-g%C3%A4rtner-25a6581b6/" target="_blank" rel="noopener">LinkedIn</a>
     </small>
   </footer>
